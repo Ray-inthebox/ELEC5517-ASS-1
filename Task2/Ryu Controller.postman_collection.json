@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "1895e703-1748-48fc-8e09-0da525f0c0ba",
+		"name": "Ryu Controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Switch List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stats/switches",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"switches"
+					]
+				},
+				"description": "Get all switches connected to the controller."
+			},
+			"response": []
+		},
+		{
+			"name": "Get the first switch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stats/desc/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"desc",
+						"1"
+					]
+				},
+				"description": "Get the first switch connenct to the controller"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Flow on first switch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stats/flow/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"flow",
+						"1"
+					]
+				},
+				"description": "Get the flowentry of the first switch"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all filtered flowentry status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stats/flow/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"flow",
+						"1"
+					]
+				},
+				"description": "Use POST requiest method to supply filter."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Flowentry",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dpid\": 1,\n    \"action\": [],\n    \"idle_timeout\": 0,\n    \"cookie\": 42,\n    \"hard_timeout\": 0,\n    \"priority\": 450000,\n    \"table_id\": 0,\n    \"match\": {\n        \"in_port\": 3\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/stats/flowentry/delete_strict",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"flowentry",
+						"delete_strict"
+					]
+				},
+				"description": "Delete flowentry by modify the \"actions\" variable"
+			},
+			"response": []
+		},
+		{
+			"name": "Modify FLowentry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stats/flowentry/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"flowentry",
+						"add"
+					]
+				},
+				"description": "This request will intercept the message when “action” is null."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
